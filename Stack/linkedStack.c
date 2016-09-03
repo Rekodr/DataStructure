@@ -1,3 +1,8 @@
+/*
+ author: Recodeo Rekod
+ desciption: linkedList implementation of a stack
+*/
+
 #include "stack.h"
 #include <stdio.h>
 #include <stdlib.h>
