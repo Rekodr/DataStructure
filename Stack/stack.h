@@ -1,6 +1,7 @@
 #ifndef _STACK_H
 #define _STACK_H
 
+#include "which_Implementation.h"
 typedef struct stack_ *stack ;
 
 stack Array_Stack(stack myStack);

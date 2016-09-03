@@ -9,6 +9,10 @@
 
 #define ARRAY_SIZE 50
 
+
+
+#ifdef _ARRAY_STACK_
+
 struct stack_
 {
      int *data;
@@ -88,3 +92,5 @@ int empty(stack myStack){
      myStack->stack_size = 0;
      return 1; 
 }
+
+#endif 

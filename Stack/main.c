@@ -5,33 +5,39 @@
 int main(){
      int testData[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
-     stack arrayStack = NULL;
-     stack linkedStack = NULL;
+     stack myStack = NULL;
 
+    
      //array implementation test; 
-     arrayStack = Array_Stack(arrayStack);
+	#ifdef _ARRAY_STACK_
+     myStack = Array_Stack(myStack);
+	#endif
+
      //linked list implementation test;
-     linkedStack = List_Stack(linkedStack); 
+	#ifdef _LINKED_LIST_STACK_
+     myStack = List_Stack(myStack); 
+	#endif 
 
      //insert all the data stuff
      for (int i = 0; i < 11; i++)
      {
-	    push(arrayStack, testData[i]); 
+	    push(myStack, testData[i]); 
      }
-     int *t = top(arrayStack); 
-     printf("stack size: %d\n", getSize(arrayStack));
+     int *t = top(myStack); 
+     printf("stack size: %d\n", getSize(myStack));
      printf("top: %d\n", *t);
 
      for (int i = 0; i <= 7; i++)
-		pop(arrayStack);
+		pop(myStack);
      
-     t = top(arrayStack); 
-	printf("stack size: %d\n", getSize(arrayStack));
+     t = top(myStack); 
+	printf("stack size: %d\n", getSize(myStack));
 
 	if( t != NULL)
      	printf("top: %d\n", *t);
-	
 
+	//free the allocated mem;
+	freeStack(myStack);
 
-     return 0;
+	return 0;
 }
