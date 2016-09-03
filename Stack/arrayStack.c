@@ -18,7 +18,7 @@ struct stack_
 
 };
 
-stack Stack(stack myStack)
+stack Array_Stack(stack myStack)
 {
      myStack = malloc(sizeof(struct stack_)); 
 	if(myStack == NULL){
@@ -32,7 +32,7 @@ stack Stack(stack myStack)
 	}
 	myStack->stack_size = 0;
 	myStack->top = NULL;
-	myStack->max_size = ARRAY_SIZE; 
+	myStack->max_size = ARRAY_SIZE;
 	return myStack;
 }
 
@@ -45,15 +45,16 @@ void freeStack(stack myStack){
 	free(myStack); 
 }
 
-int push(stack myStack, int data){
-
-	if(myStack->stack_size >= myStack->max_size){
-	     myStack->max_size += ARRAY_SIZE;
-	     myStack->data = realloc(myStack, sizeof(int) * myStack->max_size); 
-		if(myStack->data == NULL){
-			fprintf(stderr, "allocation failled. push %d\n", data);
-	     	return -1; 
-		}
+int push(stack myStack, int data){	
+     if (myStack->stack_size >= myStack->max_size)
+     {
+	  myStack->max_size += ARRAY_SIZE;
+	  myStack->data = realloc(myStack, sizeof(int) * myStack->max_size);
+	  if (myStack->data == NULL)
+	  {
+	       fprintf(stderr, "allocation failled. push %d\n", data);
+	       return -1;
+	  }
 	}
 
 	myStack->data[myStack->stack_size] = data;
@@ -69,7 +70,7 @@ int pop(stack myStack){
 	     return -1; 
 	}
 	myStack->stack_size--;
-	myStack->top = &myStack->data[myStack->stack_size];
+	myStack->top = &myStack->data[myStack->stack_size -1];
 	return 1;
 }
 
